@@ -1,11 +1,23 @@
-import React from "react";
-import employees from "../data/data";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const EmployeeListContainer = () => {
+  const [employees, setEmployees] = useState([]);
+
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to fire the Employee ??")) {
     }
   };
+
+  const fetchEmployees = async () => {
+    const { data } = await axios.get("http://localhost:5000/api/employees");
+
+    setEmployees(data);
+  };
+
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
 
   return (
     <div className="container mx-auto mt-4">
@@ -25,7 +37,7 @@ const EmployeeListContainer = () => {
 
         <tbody>
           {employees.map((employee, index) => (
-            <tr key={employee.id}>
+            <tr key={employee._id}>
               <td className="border px-4 py-2">{index + 1}</td>
               <td className="border px-4 py-2">{employee.name}</td>
               <td className="border px-4 py-2">{employee.employeeId}</td>
@@ -43,6 +55,7 @@ const EmployeeListContainer = () => {
                 <button
                   className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
                   // onClick={() => handleEdit(employee.id)}
+                  href={`/employee/${employee._id}`}
                 >
                   Edit
                 </button>
