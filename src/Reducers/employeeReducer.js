@@ -1,16 +1,37 @@
 import {
-  EMPLOYEE_CREATE_FAIL,
-  EMPLOYEE_CREATE_REQUEST,
-  EMPLOYEE_CREATE_SUCCESS,
+  EMPLOYEE_ADD_FAIL,
+  EMPLOYEE_ADD_REQUEST,
+  EMPLOYEE_ADD_SUCCESS,
+  EMPLOYEE_LIST_FAIL,
+  EMPLOYEE_LIST_REQUEST,
+  EMPLOYEE_LIST_SUCCESS,
 } from "../Constants/employeeConstants";
 
-export const noteCreateReducer = (state = {}, action) => {
+export const employeeListReducer = (state = { employees: [] }, action) => {
   switch (action.type) {
-    case EMPLOYEE_CREATE_REQUEST:
+    case EMPLOYEE_LIST_REQUEST:
       return { loading: true };
-    case EMPLOYEE_CREATE_SUCCESS:
+    case EMPLOYEE_LIST_SUCCESS:
+      return { loading: false, employees: action.payload };
+    case EMPLOYEE_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    case EMPLOYEE_ADD_SUCCESS:
+      return {
+        ...state,
+        employees: [...state.employees, action.payload],
+      };
+
+    default:
+      return state;
+  }
+};
+export const employeeAddReducer = (state = {}, action) => {
+  switch (action.type) {
+    case EMPLOYEE_ADD_REQUEST:
+      return { loading: true };
+    case EMPLOYEE_ADD_SUCCESS:
       return { loading: false, success: true };
-    case EMPLOYEE_CREATE_FAIL:
+    case EMPLOYEE_ADD_FAIL:
       return { loading: false, error: action.payload };
 
     default:

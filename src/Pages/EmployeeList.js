@@ -20,7 +20,7 @@ export default function EmployeeList() {
         <div className="flex justify-between bg-cyan-500 mx-10 mt-10 rounded-lg">
           <button
             onClick={() => setAddTaskOpen(true)}
-            className="flex items-center gap-1 font-semibold bg-sky-600 hover:bg-green-500 over:text-white p-2 mx-10 rounded-md m-5"
+            className="flex items-center gap-1 font-semibold bg-sky-600 hover:bg-green-500 font-serif hover:text-white p-2 mx-10 rounded-md m-5"
           >
             <BsFillPlusCircleFill className="h-5 w-5" />
             Add New Employee
@@ -29,7 +29,7 @@ export default function EmployeeList() {
             Search: <input className="rounded-md p-1" />
           </div>
         </div>
-        
+
         {addTaskOpen && (
           <NewEmployee
             onClose={() => setAddTaskOpen(false)}
