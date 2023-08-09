@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { listEmployees } from "../Actions/employeeActions";
 import Loader from "../Components/Loader";
 import ErrorMessage from "./ErrorMessage";
+import { Link } from "react-router-dom";
 
 const EmployeeListContainer = () => {
   const dispatch = useDispatch();
+  // const [addTaskOpen, setAddTaskOpen] = useState(false);
 
   const employeeList = useSelector((state) => state.employeeList);
 
@@ -54,14 +56,13 @@ const EmployeeListContainer = () => {
                     className="w-10 h-10 rounded-full"
                   />
                 </td>
+
                 <td className="border px-4 py-2">
-                  <button
-                    className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
-                    // onClick={() => handleEdit(employee.id)}
-                    href={`/employee/${employee._id}`}
-                  >
-                    Edit
-                  </button>
+                  <Link to={`/employees/${employee._id}`}>
+                    <button className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                      Profile
+                    </button>
+                  </Link>
                   <button
                     className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-xl"
                     onClick={() => handleDelete(employee._id)}

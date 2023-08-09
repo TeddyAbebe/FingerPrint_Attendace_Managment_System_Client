@@ -49,7 +49,7 @@ const EmployeeForm = ({ onClose }) => {
           className="flex w-fit border rounded-full hover:cursor-pointer hover:border-black"
           onClick={onClose}
         >
-          <IoIosCloseCircle className="h-9 w-9 hover:text-red-700" />
+          <IoIosCloseCircle className="h-8 w-8 hover:text-red-700" />
         </div>
 
         <form

@@ -6,6 +6,9 @@ import {
   EMPLOYEE_LIST_FAIL,
   EMPLOYEE_LIST_REQUEST,
   EMPLOYEE_LIST_SUCCESS,
+  EMPLOYEE_UPDATE_FAIL,
+  EMPLOYEE_UPDATE_REQUEST,
+  EMPLOYEE_UPDATE_SUCCESS,
 } from "../Constants/employeeConstants";
 
 export const listEmployees = () => async (dispatch) => {
@@ -60,3 +63,31 @@ export const addEmployeeAction =
       });
     }
   };
+
+export const updateEmployeeAction =
+  (id, name, employeeId, jobTitle, emailAddress, mobileNo, photo)=> async(dispatch) => {
+    try {
+      dispatch({
+        type: EMPLOYEE_UPDATE_REQUEST,
+      });
+
+      const { data } = await axios.put(
+        `http://localhost:5000/api/employees/${id}`,
+        { name, employeeId, jobTitle, emailAddress, mobileNo, photo }
+      );
+
+      dispatch({
+        type: EMPLOYEE_UPDATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({
+        type: EMPLOYEE_UPDATE_FAIL,
+        payload: message,
+      });
+    }
+  }

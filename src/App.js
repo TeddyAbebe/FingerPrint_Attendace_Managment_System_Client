@@ -6,6 +6,7 @@ import Dashboard from "./Pages/Dashboard";
 import EmployeeList from "./Pages/EmployeeList";
 import AttendanceList from "./Pages/AttendanceList";
 import AttendanceReport from "./Pages/AttendanceReport";
+import EmployeeProfile from "./Pages/EmployeeProfile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/employee" element={<EmployeeList />} />
+            <Route path="/employees/:id" element={<EmployeeProfile />} />
             <Route path="/attendance" element={<AttendanceList />} />
             <Route path="/report" element={<AttendanceReport />} />
           </Routes>

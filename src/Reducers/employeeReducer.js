@@ -5,6 +5,9 @@ import {
   EMPLOYEE_LIST_FAIL,
   EMPLOYEE_LIST_REQUEST,
   EMPLOYEE_LIST_SUCCESS,
+  EMPLOYEE_UPDATE_FAIL,
+  EMPLOYEE_UPDATE_REQUEST,
+  EMPLOYEE_UPDATE_SUCCESS,
 } from "../Constants/employeeConstants";
 
 export const employeeListReducer = (state = { employees: [] }, action) => {
@@ -25,6 +28,7 @@ export const employeeListReducer = (state = { employees: [] }, action) => {
       return state;
   }
 };
+
 export const employeeAddReducer = (state = {}, action) => {
   switch (action.type) {
     case EMPLOYEE_ADD_REQUEST:
@@ -33,6 +37,20 @@ export const employeeAddReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case EMPLOYEE_ADD_FAIL:
       return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const employeeUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case EMPLOYEE_UPDATE_REQUEST:
+      return { loading: true };
+    case EMPLOYEE_UPDATE_SUCCESS:
+      return { loading: false, success: true };
+    case EMPLOYEE_UPDATE_FAIL:
+      return { loading: false, error: action.payload, success: false };
 
     default:
       return state;
