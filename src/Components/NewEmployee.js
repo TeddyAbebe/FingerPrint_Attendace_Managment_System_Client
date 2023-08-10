@@ -5,7 +5,6 @@ import { addEmployeeAction } from "../Actions/employeeActions";
 
 const EmployeeForm = ({ onClose }) => {
   const [name, setName] = useState("");
-  const [employeeId, setEmployeeId] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [mobileNo, setMobileNo] = useState("");
@@ -21,7 +20,6 @@ const EmployeeForm = ({ onClose }) => {
     e.preventDefault();
     if (
       !name ||
-      !employeeId ||
       !jobTitle ||
       !emailAddress ||
       !mobileNo ||
@@ -31,7 +29,6 @@ const EmployeeForm = ({ onClose }) => {
     dispatch(
       addEmployeeAction(
         name,
-        employeeId,
         jobTitle,
         emailAddress,
         mobileNo,
@@ -66,15 +63,6 @@ const EmployeeForm = ({ onClose }) => {
             required
           />
 
-          <input
-            type="text"
-            name="employeeId"
-            value={employeeId}
-            onChange={(e) => setEmployeeId(e.target.value)}
-            placeholder="Employee ID"
-            className="rounded-md p-2"
-            required
-          />
           <input
             type="text"
             name="jobTitle"

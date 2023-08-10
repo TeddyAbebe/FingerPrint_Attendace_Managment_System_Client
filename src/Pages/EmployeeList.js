@@ -4,18 +4,13 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 import EmployeeListContainer from "../Components/EmployeeListContainer";
 import NewEmployee from "../Components/NewEmployee";
 
-export default function EmployeeList() {
+export default function EmployeeList({ search, setSearch }) {
   const [employees, setEmployees] = useState([]);
   const [addTaskOpen, setAddTaskOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
 
   const handleAddEmployee = (newEmployee) => {
     setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
   };
-
-  const filteredEmployees = employees.filter((employee) =>
-    employee.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div>
@@ -33,8 +28,7 @@ export default function EmployeeList() {
             Search:{" "}
             <input
               className="rounded-md p-1"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
         </div>
@@ -47,7 +41,7 @@ export default function EmployeeList() {
           />
         )}
         <div className="bg-cyan-500 mx-10 rounded-lg">
-          <EmployeeListContainer employees={filteredEmployees} />
+          <EmployeeListContainer employees={employees} search={search} />
         </div>
       </div>
     </div>

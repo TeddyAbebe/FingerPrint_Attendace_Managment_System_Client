@@ -6,10 +6,10 @@ import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ErrorMessage from "../Components/ErrorMessage";
+import Loader from "../Components/Loader";
 
 function EmployeeProfile() {
   const [name, setName] = useState("");
-  const [employeeId, setEmployeeId] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [mobileNo, setMobileNo] = useState("");
@@ -31,7 +31,6 @@ function EmployeeProfile() {
         );
 
         setName(data.name);
-        setEmployeeId(data.employeeId);
         setJobTitle(data.jobTitle);
         setEmailAddress(data.emailAddress);
         setMobileNo(data.mobileNo);
@@ -51,7 +50,6 @@ function EmployeeProfile() {
       updateEmployeeAction(
         id,
         name,
-        employeeId,
         jobTitle,
         emailAddress,
         mobileNo,
@@ -63,7 +61,6 @@ function EmployeeProfile() {
 
     if (
       !name ||
-      !employeeId ||
       !jobTitle ||
       !emailAddress ||
       !mobileNo ||
@@ -98,16 +95,6 @@ function EmployeeProfile() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
-              className="rounded-md p-2"
-              required
-            />
-
-            <input
-              type="text"
-              name="employeeId"
-              value={employeeId}
-              onChange={(e) => setEmployeeId(e.target.value)}
-              placeholder="Employee ID"
               className="rounded-md p-2"
               required
             />
@@ -152,9 +139,9 @@ function EmployeeProfile() {
             <span className="flex justify-evenly items-center">
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md w-[30%]"
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold h-12 rounded-md w-[30%]"
               >
-                Update Employee
+                {updateEmployee.loading ? <Loader /> : "Update Employee"}
               </button>
             </span>
           </form>

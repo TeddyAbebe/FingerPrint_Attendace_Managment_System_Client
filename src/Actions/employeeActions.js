@@ -38,8 +38,7 @@ export const listEmployees = () => async (dispatch) => {
 };
 
 export const addEmployeeAction =
-  (name, employeeId, jobTitle, emailAddress, mobileNo, photo) =>
-  async (dispatch) => {
+  (name, jobTitle, emailAddress, mobileNo, photo) => async (dispatch) => {
     try {
       dispatch({
         type: EMPLOYEE_ADD_REQUEST,
@@ -47,7 +46,7 @@ export const addEmployeeAction =
 
       const { data } = await axios.post(
         `http://localhost:5000/api/employees/add`,
-        { name, employeeId, jobTitle, emailAddress, mobileNo, photo }
+        { name, jobTitle, emailAddress, mobileNo, photo }
       );
 
       dispatch({
@@ -67,8 +66,7 @@ export const addEmployeeAction =
   };
 
 export const updateEmployeeAction =
-  (id, name, employeeId, jobTitle, emailAddress, mobileNo, photo) =>
-  async (dispatch) => {
+  (id, name, jobTitle, emailAddress, mobileNo, photo) => async (dispatch) => {
     try {
       dispatch({
         type: EMPLOYEE_UPDATE_REQUEST,
@@ -76,7 +74,7 @@ export const updateEmployeeAction =
 
       const { data } = await axios.put(
         `http://localhost:5000/api/employees/${id}`,
-        { name, employeeId, jobTitle, emailAddress, mobileNo, photo }
+        { name, jobTitle, emailAddress, mobileNo, photo }
       );
 
       dispatch({

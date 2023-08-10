@@ -7,8 +7,10 @@ import EmployeeList from "./Pages/EmployeeList";
 import AttendanceList from "./Pages/AttendanceList";
 import AttendanceReport from "./Pages/AttendanceReport";
 import EmployeeProfile from "./Pages/EmployeeProfile";
+import { useState } from "react";
 
 function App() {
+  const [search, setSearch] = useState("");
   return (
     <Router>
       <div className="App">
@@ -17,7 +19,10 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/employees" element={<EmployeeList />} />
+            <Route
+              path="/employees"
+              element={<EmployeeList setSearch={setSearch} search={search} />}
+            />
             <Route path="/employees/:id" element={<EmployeeProfile />} />
             <Route path="/attendance" element={<AttendanceList />} />
             <Route path="/report" element={<AttendanceReport />} />
