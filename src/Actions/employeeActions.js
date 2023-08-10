@@ -3,6 +3,8 @@ import {
   EMPLOYEE_ADD_FAIL,
   EMPLOYEE_ADD_REQUEST,
   EMPLOYEE_ADD_SUCCESS,
+  EMPLOYEE_DELETE_REQUEST,
+  EMPLOYEE_DELETE_SUCCESS,
   EMPLOYEE_LIST_FAIL,
   EMPLOYEE_LIST_REQUEST,
   EMPLOYEE_LIST_SUCCESS,
@@ -65,7 +67,8 @@ export const addEmployeeAction =
   };
 
 export const updateEmployeeAction =
-  (id, name, employeeId, jobTitle, emailAddress, mobileNo, photo)=> async(dispatch) => {
+  (id, name, employeeId, jobTitle, emailAddress, mobileNo, photo) =>
+  async (dispatch) => {
     try {
       dispatch({
         type: EMPLOYEE_UPDATE_REQUEST,
@@ -90,4 +93,30 @@ export const updateEmployeeAction =
         payload: message,
       });
     }
+  };
+
+export const deleteEmployeeAction = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: EMPLOYEE_DELETE_REQUEST,
+    });
+
+    const { data } = await axios.delete(
+      `http://localhost:5000/api/employees/${id}`
+    );
+
+    dispatch({
+      type: EMPLOYEE_DELETE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: EMPLOYEE_UPDATE_FAIL,
+      payload: message,
+    });
   }
+};

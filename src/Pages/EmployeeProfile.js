@@ -57,7 +57,9 @@ function EmployeeProfile() {
         mobileNo,
         photo
       )
-    );
+    ).then(() => {
+      navigate("/employees");
+    });
 
     if (
       !name ||
@@ -69,9 +71,6 @@ function EmployeeProfile() {
     ) {
       return;
     }
-
-    // onClose();
-    navigate("/employee");
   };
 
   return (
@@ -84,7 +83,7 @@ function EmployeeProfile() {
         <div className="flex flex-col bg-cyan-500 py-7 pb-10 md:pb-7 p-5 w-full">
           <Link
             className="flex w-fit hover:cursor-pointer"
-            to={`http://localhost:3000/employee`}
+            to={`http://localhost:3000/employees`}
           >
             <BsFillArrowLeftSquareFill className="h-8 w-8 rounded-full hover:text-red-700" />
           </Link>

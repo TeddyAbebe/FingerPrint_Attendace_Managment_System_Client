@@ -7,11 +7,15 @@ import NewEmployee from "../Components/NewEmployee";
 export default function EmployeeList() {
   const [employees, setEmployees] = useState([]);
   const [addTaskOpen, setAddTaskOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleAddEmployee = (newEmployee) => {
-    // Add the new employee to the list of employees
     setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
   };
+
+  const filteredEmployees = employees.filter((employee) =>
+    employee.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div>
@@ -26,7 +30,12 @@ export default function EmployeeList() {
             Add New Employee
           </button>
           <div className="flex items-center gap-3 text-lg font-semibold pr-10 ">
-            Search: <input className="rounded-md p-1" />
+            Search:{" "}
+            <input
+              className="rounded-md p-1"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
         </div>
 
@@ -38,7 +47,7 @@ export default function EmployeeList() {
           />
         )}
         <div className="bg-cyan-500 mx-10 rounded-lg">
-          <EmployeeListContainer employees={employees} />
+          <EmployeeListContainer employees={filteredEmployees} />
         </div>
       </div>
     </div>

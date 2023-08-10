@@ -14,18 +14,21 @@ export default function Nav() {
       >
         <LuLayoutDashboard className="h-5 w-5" /> Dashboard
       </Link>
+
       <Link
-        to="/employee"
+        to="/employees"
         className="flex justify-start pl-10 items-center gap-2 w-full"
       >
         <FaPeopleGroup className="h-5 w-5" /> Employee List
       </Link>
+
       <Link
         to="/attendance"
         className="flex justify-start pl-10 items-center gap-2 w-full"
       >
         <BsFillPeopleFill className="h-5 w-5" /> Attendance List
       </Link>
+
       <Link
         to="/report"
         className="flex justify-start pl-10 items-center gap-2 w-full"

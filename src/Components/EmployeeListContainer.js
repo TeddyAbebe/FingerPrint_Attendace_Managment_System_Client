@@ -1,30 +1,36 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listEmployees } from "../Actions/employeeActions";
+import {
+  deleteEmployeeAction,
+  listEmployees,
+} from "../Actions/employeeActions";
 import Loader from "../Components/Loader";
 import ErrorMessage from "./ErrorMessage";
 import { Link } from "react-router-dom";
 
 const EmployeeListContainer = () => {
   const dispatch = useDispatch();
-  // const [addTaskOpen, setAddTaskOpen] = useState(false);
 
   const employeeList = useSelector((state) => state.employeeList);
-
   const { loading, employees, error } = employeeList;
+
+  const deleteEmployee = useSelector((state) => state.deleteEmployee);
+  const { success: successDelete, error: errorDelete } = deleteEmployee;
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to fire the Employee ??")) {
+      dispatch(deleteEmployeeAction(id));
     }
   };
 
   useEffect(() => {
     dispatch(listEmployees());
-  }, [dispatch]);
+  }, [dispatch, successDelete]);
 
   return (
     <div className="container mx-auto mt-4">
       {error && <ErrorMessage message={error} />}
+      {errorDelete && <ErrorMessage message={errorDelete} />}
       {loading && <Loader />}
       {employees && (
         <table className="w-full table-auto">

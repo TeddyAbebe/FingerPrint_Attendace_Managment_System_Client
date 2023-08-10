@@ -17,7 +17,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/employee" element={<EmployeeList />} />
+            <Route path="/employees" element={<EmployeeList />} />
             <Route path="/employees/:id" element={<EmployeeProfile />} />
             <Route path="/attendance" element={<AttendanceList />} />
             <Route path="/report" element={<AttendanceReport />} />
