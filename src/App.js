@@ -8,6 +8,7 @@ import AttendanceList from "./Pages/AttendanceList";
 import AttendanceReport from "./Pages/AttendanceReport";
 import EmployeeProfile from "./Pages/EmployeeProfile";
 import { useState } from "react";
+import LandingPage from "./Pages/LandingPage";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -18,6 +19,8 @@ function App() {
         <div className="flex">
           <Nav />
           <Routes>
+
+            <Route path="/" element={<LandingPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route
               path="/employees"

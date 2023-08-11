@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <div className="flex flex-col justify-center gap-28 items-center text-white bg-sky-950 min-h-screen w-[16%]">
+    <div className="flex flex-col justify-center items-center gap-32 text-white bg-sky-950 min-h-screen w-[16%] ">
       <Link
         to="/dashboard"
         className="flex justify-start pl-10 items-center gap-2 w-full"
