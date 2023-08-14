@@ -11,25 +11,33 @@ import { useState } from "react";
 import LandingPage from "./Pages/LandingPage";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [search, setSearch] = useState("");
   return (
     <Router>
       <div className="App">
         <Header />
         <div className="flex">
-          <Nav />
-          <Routes>
-
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route
-              path="/employees"
-              element={<EmployeeList setSearch={setSearch} search={search} />}
-            />
-            <Route path="/employees/:id" element={<EmployeeProfile />} />
-            <Route path="/attendance" element={<AttendanceList />} />
-            <Route path="/report" element={<AttendanceReport />} />
-          </Routes>
+          {isAuthenticated ? (
+            <>
+              <Nav />
+              <Routes>
+                {/* Your Routes for authenticated users */}
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route
+                  path="/employees"
+                  element={
+                    <EmployeeList setSearch={setSearch} search={search} />
+                  }
+                />
+                <Route path="/employees/:id" element={<EmployeeProfile />} />
+                <Route path="/attendance" element={<AttendanceList />} />
+                <Route path="/report" element={<AttendanceReport />} />
+              </Routes>
+            </>
+          ) : (
+            <LandingPage setIsAuthenticated={setIsAuthenticated} />
+          )}
         </div>
       </div>
     </Router>

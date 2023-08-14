@@ -3,7 +3,7 @@ import { BsFingerprint } from "react-icons/bs";
 
 export default function Header() {
   return (
-    <div className="flex gap-24 p-5 w-[98.9vw] bg-cyan-700 text-white text-xl font-bold font-serif">
+    <div className="flex gap-24 p-5 w-full bg-cyan-700 text-white text-xl font-bold font-serif">
       Attendance
       <div className="flex items-center gap-1 text-base font-medium font-mono">
         <BsFingerprint /> DAN Energy Biometric Fingerprint Employee Attendance
