@@ -10,7 +10,7 @@ export default function Heading({ header }) {
         to="/dashboard"
         className="flex items-center gap-1 text-black text-md font-bold pr-10"
       >
-        <FaLeaf className="h-9 w-9 text-[#00FF00]" />
+        <FaLeaf className="h-9 w-9 text-green-500 hover:text-[#00FF00]" />
       </Link>
     </div>
   );

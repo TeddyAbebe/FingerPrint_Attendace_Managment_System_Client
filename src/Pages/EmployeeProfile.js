@@ -82,7 +82,7 @@ function EmployeeProfile() {
             className="flex w-fit hover:cursor-pointer"
             to={`http://localhost:3000/employees`}
           >
-            <BsFillArrowLeftSquareFill className="h-8 w-8 rounded-full hover:text-red-700" />
+            <BsFillArrowLeftSquareFill className="h-8 w-8 rounded-full hover:text-[#00FF00]" />
           </Link>
 
           <form
