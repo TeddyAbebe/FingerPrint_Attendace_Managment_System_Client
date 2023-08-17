@@ -16,7 +16,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header
+          isAuthenticated={isAuthenticated}
+          setIsAuthenticated={setIsAuthenticated}
+        />
         <div className="flex">
           {isAuthenticated ? (
             <>

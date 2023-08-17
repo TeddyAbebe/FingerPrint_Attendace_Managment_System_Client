@@ -58,6 +58,7 @@ export default function LandingPage({ setIsAuthenticated }) {
       setLoading(false);
       setError(false);
       setIsAuthenticated(true);
+      console.log("Authentication set to true");
 
       navigate("/dashboard");
     } catch (error) {
@@ -66,11 +67,34 @@ export default function LandingPage({ setIsAuthenticated }) {
     }
   };
 
-  const registerHandler = (event) => {
-    event.preventDefault();
-    // Perform registration logic
-    // Once registration is successful, set isRegistered to true
-    setIsRegistered(true);
+  const registerHandler = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords Do not Match !");
+    } else {
+      setMessage(null);
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+
+        setLoading(true);
+        const { data } = await axios.post(
+          "http://localhost:5000/api/admin/",
+          { name, email, password, picture },
+          config
+        );
+        setIsRegistered(true);
+        setLoading(false);
+        localStorage.setItem("adminInfo", JSON.stringify(data));
+      } catch (error) {
+        setError(error.response.data.message);
+        setLoading(false);
+      }
+    }
   };
 
   const handleToggleRegistration = () => {
@@ -84,6 +108,40 @@ export default function LandingPage({ setIsAuthenticated }) {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const adminPicture = (pictures) => {
+    if (!pictures) {
+      return setPicMessage("Please Select an Image");
+    }
+
+    setPicMessage(null);
+
+    if (
+      pictures.type === "image/jpeg" ||
+      pictures.type === "image/png" ||
+      pictures.type === "image/jpg"
+    ) {
+      const data = new FormData();
+
+      data.append("file", pictures);
+      data.append("upload_preset", "attendance");
+      data.append("cloud_name", "teddyabebe");
+      fetch("https://api.cloudinary.com/v1_1/teddyabebe/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.url);
+          setPicture(data.url.toString());
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return setPicMessage("Please Select an Image");
+    }
+  };
+
   return (
     <div className="flex">
       <div className="w-[40%] flex justify-center items-center">
@@ -94,6 +152,7 @@ export default function LandingPage({ setIsAuthenticated }) {
         <div className="w-[60%] mb-10">
           <form>
             {error && <ErrorMessage message={error} />}
+            {message && <ErrorMessage message={message} />}
             {loading && <Loader />}
             {isRegistered ? (
               <span className="flex flex-col gap-5 mt-5">
@@ -195,7 +254,7 @@ export default function LandingPage({ setIsAuthenticated }) {
                   accept="image/*"
                   label="Upload Profile Picture"
                   className="border rounded-md p-1 hover:cursor-pointer hover:border-[#00FF00]"
-                  // onChange={(e) => setAvatar(e.target.files[0])}
+                  onChange={(e) => adminPicture(e.target.files[0])}
                 />
 
                 <div className="flex justify-center">
