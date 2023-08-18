@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFingerprint } from "react-icons/bs";
-import { MdArrowDropDownCircle } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-import { TbLogout2 } from "react-icons/tb";
+import { FaPowerOff } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../Actions/adminActions";
 
 export default function Header({ isAuthenticated, setIsAuthenticated }) {
   const dispatch = useDispatch();
@@ -13,9 +12,9 @@ export default function Header({ isAuthenticated, setIsAuthenticated }) {
 
   const [showOptions, setShowOptions] = useState(false);
 
-  // const userLogin = useSelector((state) => state.userLogin);
+  const adminLogin = useSelector((state) => state.adminLogin);
 
-  // const { adminInfo } = userLogin;
+  const { adminInfo } = adminLogin;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -23,19 +22,15 @@ export default function Header({ isAuthenticated, setIsAuthenticated }) {
     }
   }, [isAuthenticated]);
 
-  const toggleOptions = () => {
-    setShowOptions(!showOptions);
-  };
-
   const handleLogout = () => {
-    localStorage.removeItem("adminInfo");
-    setIsAuthenticated(false); // Update the authentication state
+    dispatch(logout());
+    setIsAuthenticated(false);
     navigate("/");
   };
 
   return (
     <div className=" flex justify-between gap-24 p-5 w-full bg-cyan-700 text-white text-xl font-bold font-serif">
-      <p>Attendance</p>
+      <p>DAN Attendance</p>
       <div className="flex items-center gap-1 text-base font-medium font-mono">
         <BsFingerprint /> DAN Energy Biometric Fingerprint Employee Attendance
         System
@@ -43,37 +38,14 @@ export default function Header({ isAuthenticated, setIsAuthenticated }) {
 
       {isAuthenticated && (
         <div className="relative flex justify-center items-center gap-2 mr-10">
-          <p>DanEnergy HR</p>
+          <p>{adminInfo?.name}</p>
+          {/* <img src={adminInfo?.picture} alt="HR" className="w-10 h-10 rounded-full" /> */}
           <button
-            className="hover:border hover:border-white border border-cyan-700 hover:text-[#00FF00] rounded-full"
-            onClick={toggleOptions}
+            className="hover:text-red-800 text-red-600 rounded-full"
+            onClick={handleLogout}
           >
-            <MdArrowDropDownCircle />
+            <FaPowerOff />
           </button>
-
-          {showOptions && (
-            <div className="absolute flex flex-col z-10 bg-cyan-700 -right-10 top-10 py-4 px-4 gap-3 rounded-3xl shadow-md ">
-              <div className="flex justify-between items-center hover:bg-gray-300  rounded-xl  px-1 py-1 gap-1 hover:text-gray-700">
-                <CgProfile className="" />
-                <button
-                  className=" text-xs font-serif font-semibold tracking-wider"
-                  // onClick={() => setTheme("default")}
-                >
-                  Admin Profile
-                </button>
-              </div>
-
-              <div className="flex items-center hover:bg-gray-300 rounded-lg px-1 py-1 gap-1 hover:text-gray-700">
-                <TbLogout2 className="" />
-                <button
-                  className="text-xs font-serif font-semibold tracking-wider"
-                  onClick={handleLogout}
-                >
-                  LogOut
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       )}
     </div>

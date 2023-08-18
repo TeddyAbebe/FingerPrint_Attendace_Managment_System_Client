@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import DanEnergy from "../Assets/DanEnergy.gif";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import axios from "axios";
 import Loader from "../Components/Loader";
 import ErrorMessage from "../Components/ErrorMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { login, register } from "../Actions/adminActions";
 
 export default function LandingPage({ setIsAuthenticated }) {
   const [isRegistered, setIsRegistered] = useState(true);
@@ -17,83 +18,38 @@ export default function LandingPage({ setIsAuthenticated }) {
   const [picture, setPicture] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
   );
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(false);
   const [picMessage, setPicMessage] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const adminLogin = useSelector((state) => state.adminLogin);
+  const { loading, error, adminInfo } = adminLogin;
+
+  const adminRegister = useSelector((state) => state.adminRegister);
+  // const { loading, error, adminInfo } = adminRegister;
 
   useEffect(() => {
-    const adminInfo = localStorage.getItem("adminInfo");
-
     if (adminInfo) {
+      setIsAuthenticated(true);
       navigate("/dashboard");
     }
-  }, [navigate]);
+  }, [navigate, adminInfo, setIsAuthenticated]);
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-
-      setLoading(true);
-
-      const { data } = await axios.post(
-        "http://localhost:5000/api/admin/login",
-        {
-          email,
-          password,
-        },
-        config
-      );
-
-      console.log(data);
-
-      localStorage.setItem("adminInfo", JSON.stringify(data));
-      setLoading(false);
-      setError(false);
-      setIsAuthenticated(true);
-      console.log("Authentication set to true");
-
-      navigate("/dashboard");
-    } catch (error) {
-      setError(error.response.data.message);
-      setLoading(false);
-    }
+    dispatch(login(email, password));
   };
 
   const registerHandler = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setMessage("Passwords Do not Match !");
+      setMessage("Passwords do not match");
     } else {
-      setMessage(null);
-      try {
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
-
-        setLoading(true);
-        const { data } = await axios.post(
-          "http://localhost:5000/api/admin/",
-          { name, email, password, picture },
-          config
-        );
-        setIsRegistered(true);
-        setLoading(false);
-        localStorage.setItem("adminInfo", JSON.stringify(data));
-      } catch (error) {
-        setError(error.response.data.message);
-        setLoading(false);
-      }
+      dispatch(register(name, email, password, picture));
+      setIsRegistered(true);
     }
   };
 

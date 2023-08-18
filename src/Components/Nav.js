@@ -1,5 +1,5 @@
 import React from "react";
-import { LuLayoutDashboard } from "react-icons/lu";
+import { FaLeaf } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { TbReportAnalytics } from "react-icons/tb";
@@ -12,28 +12,30 @@ export default function Nav() {
         to="/dashboard"
         className="flex justify-start pl-10 items-center gap-2 w-full"
       >
-        <LuLayoutDashboard className="h-5 w-5" /> Dashboard
+        <FaLeaf className="h-5 w-5 text-[#00FF00]" />
+        Dashboard
       </Link>
 
       <Link
         to="/employees"
         className="flex justify-start pl-10 items-center gap-2 w-full"
       >
-        <FaPeopleGroup className="h-5 w-5" /> Employee List
+        <FaPeopleGroup className="h-5 w-5 text-[#00FF00]" /> Employee List
       </Link>
 
       <Link
         to="/attendance"
         className="flex justify-start pl-10 items-center gap-2 w-full"
       >
-        <BsFillPeopleFill className="h-5 w-5" /> Attendance List
+        <BsFillPeopleFill className="h-5 w-5 text-[#00FF00]" /> Attendance List
       </Link>
 
       <Link
         to="/report"
         className="flex justify-start pl-10 items-center gap-2 w-full"
       >
-        <TbReportAnalytics className="h-5 w-5" /> Attendance Report
+        <TbReportAnalytics className="h-5 w-5 text-[#00FF00]" /> Attendance
+        Report
       </Link>
     </div>
   );

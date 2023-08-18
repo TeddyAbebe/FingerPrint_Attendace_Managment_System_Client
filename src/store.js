@@ -7,18 +7,28 @@ import {
   employeeListReducer,
   employeeUpdateReducer,
 } from "./Reducers/employeeReducer";
-import { adminLoginReducer } from "./Reducers/adminReducer";
+import {
+  adminLoginReducer,
+  adminRegisterReducer,
+} from "./Reducers/adminReducer";
 
 const reducer = combineReducers({
   //this will contain all reducers
   adminLogin: adminLoginReducer,
+  adminRegister: adminRegisterReducer,
   employeeList: employeeListReducer,
   addEmployee: employeeAddReducer,
   updateEmployee: employeeUpdateReducer,
   deleteEmployee: employeeDeleteReducer,
 });
 
-const initialState = {};
+const adminInfoFromStorage = localStorage.getItem("adminInfo")
+  ? JSON.parse(localStorage.getItem("adminInfo"))
+  : null;
+
+const initialState = {
+  adminLogin: { adminInfo: adminInfoFromStorage },
+};
 
 const middleware = [thunk];
 
