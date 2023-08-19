@@ -132,7 +132,7 @@ export default function LandingPage({ setIsAuthenticated }) {
                   />
 
                   <div
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                     onClick={handleTogglePasswordVisibility}
                   >
                     {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
@@ -177,7 +177,7 @@ export default function LandingPage({ setIsAuthenticated }) {
                   />
 
                   <div
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                     onClick={handleTogglePasswordVisibility}
                   >
                     {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
@@ -195,7 +195,7 @@ export default function LandingPage({ setIsAuthenticated }) {
                   />
 
                   <div
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                     onClick={handleToggleConfirmPasswordVisibility}
                   >
                     {showConfirmPassword ? (
