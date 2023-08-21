@@ -20,14 +20,14 @@ export default function Header({ isAuthenticated, setIsAuthenticated }) {
 
   return (
     <div className=" flex justify-between gap-24 p-5 w-full bg-cyan-700 text-white text-xl font-bold font-serif">
-      <p>Attendance</p>
-      <div className="flex items-center gap-1 text-base font-medium font-mono">
+      <p className="3xl:text-4xl">Attendance</p>
+      <div className="flex items-center gap-1 text-base font-medium font-mono 3xl:text-3xl">
         <BsFingerprint /> DAN Energy Biometric Fingerprint Employee Attendance
         System
       </div>
 
       {isAuthenticated && (
-        <div className="relative flex justify-center items-center gap-2 mr-10">
+        <div className="relative flex justify-center items-center gap-2 mr-10 3xl:text-3xl">
           <p>{adminInfo?.name}</p>
           {/* <img src={adminInfo?.picture} alt="HR" className="w-10 h-10 rounded-full" /> */}
           <button

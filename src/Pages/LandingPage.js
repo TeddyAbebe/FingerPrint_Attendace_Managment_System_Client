@@ -135,7 +135,7 @@ export default function LandingPage({ setIsAuthenticated }) {
                 <div className="flex justify-center">
                   <button
                     onClick={loginHandler}
-                    className="border border-black w-24 p-1 rounded text-base font-bold font-serif hover:bg-[#0E7490] hover:text-white hover:tracking-widest"
+                    className="border border-black w-24 p-1 rounded text-base font-bold font-serif hover:bg-[#0E7490] hover:text-white hover:tracking-widest 3xl:text-3xl 3xl:w-36"
                   >
                     Login
                   </button>
@@ -211,7 +211,7 @@ export default function LandingPage({ setIsAuthenticated }) {
                 <div className="flex justify-center">
                   <button
                     onClick={registerHandler}
-                    className="border border-black w-24 p-1 rounded text-base font-bold font-serif hover:bg-[#0E7490] hover:text-white"
+                    className="border border-black w-24 p-1 rounded text-base font-bold font-serif hover:bg-[#0E7490] hover:text-white 3xl:text-3xl 3xl:w-36"
                   >
                     Register
                   </button>
@@ -221,7 +221,7 @@ export default function LandingPage({ setIsAuthenticated }) {
           </form>
         </div>
 
-        <div>
+        <div className="3xl:text-3xl">
           <p>
             {isRegistered
               ? "Don't have an account? "
@@ -229,7 +229,7 @@ export default function LandingPage({ setIsAuthenticated }) {
             <Link
               to="/"
               onClick={handleToggleRegistration}
-              className="font-serif font-bold hover:text-[#00FF00]"
+              className="font-serif font-bold hover:text-[#00FF00] "
             >
               {isRegistered ? "Register" : "Login"}
             </Link>
