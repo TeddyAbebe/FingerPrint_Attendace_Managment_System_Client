@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFingerprint } from "react-icons/bs";
 import { FaPowerOff } from "react-icons/fa";
@@ -8,19 +8,9 @@ import { logout } from "../Actions/adminActions";
 export default function Header({ isAuthenticated, setIsAuthenticated }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log("isAuthenticated:", isAuthenticated);
-
-  const [showOptions, setShowOptions] = useState(false);
 
   const adminLogin = useSelector((state) => state.adminLogin);
-
   const { adminInfo } = adminLogin;
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      setShowOptions(false);
-    }
-  }, [isAuthenticated]);
 
   const handleLogout = () => {
     dispatch(logout());

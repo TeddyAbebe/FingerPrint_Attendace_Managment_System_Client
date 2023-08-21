@@ -19,16 +19,12 @@ export default function LandingPage({ setIsAuthenticated }) {
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
   );
   const [message, setMessage] = useState(false);
-  const [picMessage, setPicMessage] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const adminLogin = useSelector((state) => state.adminLogin);
   const { loading, error, adminInfo } = adminLogin;
-
-  const adminRegister = useSelector((state) => state.adminRegister);
-  // const { loading, error, adminInfo } = adminRegister;
 
   useEffect(() => {
     if (adminInfo) {
@@ -66,10 +62,8 @@ export default function LandingPage({ setIsAuthenticated }) {
 
   const adminPicture = (pictures) => {
     if (!pictures) {
-      return setPicMessage("Please Select an Image");
+      return;
     }
-
-    setPicMessage(null);
 
     if (
       pictures.type === "image/jpeg" ||
@@ -94,7 +88,7 @@ export default function LandingPage({ setIsAuthenticated }) {
           console.log(err);
         });
     } else {
-      return setPicMessage("Please Select an Image");
+      return console.error("Please Select an Image");
     }
   };
 
@@ -205,6 +199,7 @@ export default function LandingPage({ setIsAuthenticated }) {
                     )}
                   </div>
                 </div>
+
                 <input
                   type="file"
                   accept="image/*"

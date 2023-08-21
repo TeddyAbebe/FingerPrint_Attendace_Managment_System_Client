@@ -63,7 +63,7 @@ const EmployeeListContainer = ({ search }) => {
                     <img
                       src={employee.photo}
                       alt={employee.name}
-                      className="w-16 h-16 bg-orange-800 rounded-full"
+                      className="w-16 h-16 bg-[#00FF00] rounded-full"
                     />
                   </td>
 

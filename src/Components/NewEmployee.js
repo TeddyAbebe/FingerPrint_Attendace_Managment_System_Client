@@ -2,41 +2,76 @@ import React, { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { addEmployeeAction } from "../Actions/employeeActions";
+import ErrorMessage from "./ErrorMessage";
+import Loader from "./Loader";
 
 const EmployeeForm = ({ onClose }) => {
   const [name, setName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [mobileNo, setMobileNo] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(
+    "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+  );
 
   const dispatch = useDispatch();
 
   const addEmployee = useSelector((state) => state.addEmployee);
 
-  const { loading, error, employee } = addEmployee;
+  const { loading, error } = addEmployee;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      !name ||
-      !jobTitle ||
-      !emailAddress ||
-      !mobileNo ||
-      !photo
-    )
-      return;
-    dispatch(
-      addEmployeeAction(
-        name,
-        jobTitle,
-        emailAddress,
-        mobileNo,
-        photo
-      )
+    if (!name || !jobTitle || !emailAddress || !mobileNo || !photo) return;
+    dispatch(addEmployeeAction(name, jobTitle, emailAddress, mobileNo, photo));
+
+    setName("");
+    setJobTitle("");
+    setEmailAddress("");
+    setMobileNo("");
+    setPhoto(
+      "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
     );
 
     onClose();
+  };
+
+  const employeePicture = (pictures) => {
+    if (!pictures) {
+      return;
+    }
+
+    if (
+      pictures.type === "image/jpeg" ||
+      pictures.type === "image/png" ||
+      pictures.type === "image/jpg"
+    ) {
+      const data = new FormData();
+
+      data.append("file", pictures);
+      data.append("upload_preset", "attendance");
+      data.append("cloud_name", "teddyabebe");
+
+      fetch("https://api.cloudinary.com/v1_1/teddyabebe/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`Upload failed with status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data.url);
+          setPhoto(data.url.toString());
+        })
+        .catch((err) => {
+          console.error("Error uploading image:", err);
+        });
+    } else {
+      return console.error("Please Select a Valid Image (JPEG/PNG/JPG)");
+    }
   };
 
   return (
@@ -48,6 +83,9 @@ const EmployeeForm = ({ onClose }) => {
         >
           <IoIosCloseCircle className="h-8 w-8 hover:text-red-700" />
         </div>
+
+        {error && <ErrorMessage message={error} />}
+        {loading && <Loader />}
 
         <form
           onSubmit={handleSubmit}
@@ -93,13 +131,11 @@ const EmployeeForm = ({ onClose }) => {
             required
           />
           <input
-            type="text"
+            type="file"
             name="photo"
-            value={photo}
-            onChange={(e) => setPhoto(e.target.value)}
-            placeholder="Photo URL"
-            className="rounded-md p-2"
-            required
+            accept="image/*"
+            onChange={(e) => employeePicture(e.target.files[0])}
+            className="w-1/2 hover:cursor-pointer p-1 border border-cyan-500 hover:border-[#00FF00] rounded"
           />
           <span className="flex justify-evenly items-center">
             <button
