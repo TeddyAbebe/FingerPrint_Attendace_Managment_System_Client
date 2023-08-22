@@ -75,8 +75,8 @@ const EmployeeForm = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed w-[79vw] mx-10 py-10 flex justify-end md:justify-center items-center text-white bg-[#00000060] rounded-xl">
-      <div className="flex flex-col bg-cyan-500 py-7 pb-10 md:pb-7 shadow-xl rounded-2xl p-5 gap- w-full md:w-[50%]">
+    <div className="fixed w-[79vw] mx-10 py-10 flex justify-center items-center text-white bg-[#00000060] rounded-xl">
+      <div className="flex flex-col bg-cyan-500 py-7 pb-10 md:pb-7 shadow-xl rounded-2xl p-5 w-1/2">
         <div
           className="flex w-fit border rounded-full hover:cursor-pointer hover:border-black"
           onClick={onClose}
