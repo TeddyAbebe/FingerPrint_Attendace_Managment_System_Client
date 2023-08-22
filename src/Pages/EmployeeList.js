@@ -16,7 +16,7 @@ export default function EmployeeList({ search, setSearch }) {
     <div>
       <Heading header="Employee List" />
       <div className="">
-        <div className="flex justify-between bg-cyan-500 mx-10 mt-10 rounded-lg">
+        <div className="flex justify-between bg-sky-950 mx-10 mt-10 rounded-lg">
           <button
             onClick={() => setAddTaskOpen(true)}
             className="flex items-center gap-1 font-semibold bg-sky-600 hover:bg-green-500 font-serif hover:text-white p-2 mx-10 rounded-md m-5"
@@ -24,7 +24,7 @@ export default function EmployeeList({ search, setSearch }) {
             <BsFillPlusCircleFill className="h-5 w-5" />
             Add New Employee
           </button>
-          <div className="flex items-center gap-3 text-lg font-semibold pr-10 ">
+          <div className="flex items-center gap-3 text-lg font-semibold pr-10 text-white ">
             Search:{" "}
             <input
               className="rounded-md p-1"
@@ -40,7 +40,7 @@ export default function EmployeeList({ search, setSearch }) {
             className="w-1/2"
           />
         )}
-        <div className="bg-cyan-500 mx-10 rounded-lg">
+        <div className="bg-sky-950 mx-10 rounded-lg text-white">
           <EmployeeListContainer employees={employees} search={search} />
         </div>
       </div>

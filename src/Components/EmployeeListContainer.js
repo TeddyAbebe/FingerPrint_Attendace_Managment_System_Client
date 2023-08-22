@@ -54,12 +54,12 @@ const EmployeeListContainer = ({ search }) => {
               )
               .map((employee, index) => (
                 <tr key={employee._id}>
-                  <td className="border px-4 py-2">{index + 1}</td>
-                  <td className="border px-4 py-2">{employee.name}</td>
-                  <td className="border px-4 py-2">{employee.jobTitle}</td>
-                  <td className="border px-4 py-2">{employee.emailAddress}</td>
-                  <td className="border px-4 py-2">{employee.mobileNo}</td>
-                  <td className="border px-4 py-2">
+                  <td className="border border-gray-400 px-4 py-2">{index + 1}</td>
+                  <td className="border border-gray-400 px-4 py-2">{employee.name}</td>
+                  <td className="border border-gray-400 px-4 py-2">{employee.jobTitle}</td>
+                  <td className="border border-gray-400 px-4 py-2">{employee.emailAddress}</td>
+                  <td className="border border-gray-400 px-4 py-2">{employee.mobileNo}</td>
+                  <td className="border border-gray-400 px-4 py-2">
                     <img
                       src={employee.photo}
                       alt={employee.name}
@@ -67,14 +67,14 @@ const EmployeeListContainer = ({ search }) => {
                     />
                   </td>
 
-                  <td className="border-t px-4 py-3 space-x-10">
+                  <td className="border-t border-gray-400 px-4 py-3 space-x-10">
                     <Link to={`/employees/${employee._id}`}>
-                      <button className="mr-2 bg-blue-500 hover:bg-green-500 font-serif hover:text-white font-bold py-2 px-4 rounded-xl">
+                      <button className="mr-2 bg-blue-600 hover:bg-green-500 font-serif text-black hover:text-white font-bold py-2 px-4 rounded-xl">
                         Profile
                       </button>
                     </Link>
                     <button
-                      className="  bg-[#E50D0E] font-serif hover:text-white font-semibold py-2 px-4 rounded-xl"
+                      className="bg-[#E50D0E] hover:bg-red-800 font-serif hover:text-white font-semibold py-2 px-4 rounded-xl"
                       onClick={() => handleDelete(employee._id)}
                     >
                       Delete
