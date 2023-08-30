@@ -76,7 +76,7 @@ const EmployeeForm = ({ onClose }) => {
 
   return (
     <div className="fixed w-[79vw] mx-10 py-10 flex justify-center items-center text-white bg-[#00000060] rounded-xl">
-      <div className="flex flex-col bg-cyan-500 py-7 pb-10 md:pb-7 shadow-xl rounded-2xl p-5 w-1/2">
+      <div className="flex flex-col bg-sky-950 py-7 pb-10 md:pb-7 shadow-xl rounded-2xl p-5 w-1/2">
         <div
           className="flex w-fit border rounded-full hover:cursor-pointer hover:border-black"
           onClick={onClose}
@@ -135,7 +135,7 @@ const EmployeeForm = ({ onClose }) => {
             name="photo"
             accept="image/*"
             onChange={(e) => employeePicture(e.target.files[0])}
-            className="w-1/2 hover:cursor-pointer p-1 border border-cyan-500 hover:border-[#00FF00] rounded"
+            className="w-1/2 hover:cursor-pointer p-1 text-white"
           />
           <span className="flex justify-evenly items-center">
             <button

@@ -40,7 +40,7 @@ export default function EmployeeList({ search, setSearch }) {
             className="w-1/2"
           />
         )}
-        <div className="bg-sky-950 mx-10 rounded-lg text-white">
+        <div className="bg-sky-950 mx-10 rounded- text-white">
           <EmployeeListContainer employees={employees} search={search} />
         </div>
       </div>

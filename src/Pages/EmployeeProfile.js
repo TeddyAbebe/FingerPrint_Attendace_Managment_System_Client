@@ -98,13 +98,13 @@ function EmployeeProfile() {
       {error ? (
         <ErrorMessage message={error} />
       ) : (
-        <div className="flex items-center bg-cyan-500">
+        <div className="flex items-center bg-sky-950 border-l mx-10 rounded-2xl">
           <div className="flex flex-col justify-center py-7 pb-10 md:pb-7 p-5 w-[60%]">
             <Link
               className="flex w-fit hover:cursor-pointer"
               to={`http://localhost:3000/employees`}
             >
-              <BsFillArrowLeftSquareFill className="h-8 w-8 rounded-full hover:text-[#00FF00]" />
+              <BsFillArrowLeftSquareFill className="h-8 w-8 rounded-full text-white hover:text-[#00FF00]" />
             </Link>
 
             <form
@@ -161,7 +161,7 @@ function EmployeeProfile() {
                   type="submit"
                   className="bg-green-500 hover:bg-green-600 text-white font-semibold h-12 rounded-md w-[30%]"
                 >
-                  {updateEmployee.loading ? <Loader /> : "Update Employee"}
+                  {updateEmployee.loading ? <Loader /> : "Update"}
                 </button>
               </span>
             </form>

@@ -19,7 +19,7 @@ export default function Header({ isAuthenticated, setIsAuthenticated }) {
   };
 
   return (
-    <div className=" flex justify-between gap-24 p-5 w-full bg-sky-950 text-white text-xl font-bold font-serif">
+    <div className=" border-b flex justify-between gap-24 p-5 w-full bg-sky-950 text-white text-xl font-bold font-serif">
       <p className="3xl:text-4xl pl-8">Attendance</p>
       <div className="flex items-center gap-1 text-base font-medium font-mono 3xl:text-3xl">
         <BsFingerprint /> DAN Energy Biometric Fingerprint Employee Attendance
