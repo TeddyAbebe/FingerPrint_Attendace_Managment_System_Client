@@ -19,7 +19,7 @@ export const listEmployees = () => async (dispatch) => {
       type: EMPLOYEE_LIST_REQUEST,
     });
 
-    const { data } = await axios.get(`http://localhost:5000/api/employees`);
+    const { data } = await axios.get(`https://finger-print-server.onrender.com/api/employees`);
 
     dispatch({
       type: EMPLOYEE_LIST_SUCCESS,
@@ -45,7 +45,7 @@ export const addEmployeeAction =
       });
 
       const { data } = await axios.post(
-        `http://localhost:5000/api/employees/add`,
+        `https://finger-print-server.onrender.com/api/employees/add`,
         { name, jobTitle, emailAddress, mobileNo, photo }
       );
 
@@ -73,7 +73,7 @@ export const updateEmployeeAction =
       });
 
       const { data } = await axios.put(
-        `http://localhost:5000/api/employees/${id}`,
+        `https://finger-print-server.onrender.com/api/employees/${id}`,
         { name, jobTitle, emailAddress, mobileNo, photo }
       );
 
@@ -100,7 +100,7 @@ export const deleteEmployeeAction = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.delete(
-      `http://localhost:5000/api/employees/${id}`
+      `https://finger-print-server.onrender.com/api/employees/${id}`
     );
 
     dispatch({

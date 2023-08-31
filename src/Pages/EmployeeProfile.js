@@ -29,7 +29,7 @@ function EmployeeProfile() {
     const fetching = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/employees/${id}`
+          `https://finger-print-server.onrender.com/api/employees/${id}`
         );
 
         setName(data.name);
@@ -98,11 +98,11 @@ function EmployeeProfile() {
       {error ? (
         <ErrorMessage message={error} />
       ) : (
-        <div className="flex items-center bg-sky-950 border-l mx-10 rounded-2xl">
+        <div className="flex items-center bg-sky-950 border-l mx-10 rounded-2xl mt-10">
           <div className="flex flex-col justify-center py-7 pb-10 md:pb-7 p-5 w-[60%]">
             <Link
               className="flex w-fit hover:cursor-pointer"
-              to={`http://localhost:3000/employees`}
+              to="/employees"
             >
               <BsFillArrowLeftSquareFill className="h-8 w-8 rounded-full text-white hover:text-[#00FF00]" />
             </Link>

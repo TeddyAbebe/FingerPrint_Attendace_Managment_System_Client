@@ -20,7 +20,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/admin/login",
+      "https://finger-print-server.onrender.com/api/admin/login",
       {
         email,
         password,
@@ -59,7 +59,7 @@ export const register =
       };
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/admin/",
+        "https://finger-print-server.onrender.com/api/admin/",
         { name, email, password, picture },
         config
       );
