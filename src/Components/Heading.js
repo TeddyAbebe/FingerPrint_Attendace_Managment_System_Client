@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Heading({ header }) {
   return (
-    <div className="flex justify-between items-center bg-slate-300 w-[84vw] p-5 font-serif font-bold text-lg ">
+    <div className="flex justify-between items-center text-white border-l bg-sky-950 w-[84vw] p-5 font-bold text-lg ">
       <h1>{header}</h1>
       <Link
         to="/dashboard"

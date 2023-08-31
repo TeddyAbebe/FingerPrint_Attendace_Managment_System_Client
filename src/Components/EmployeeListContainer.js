@@ -57,7 +57,7 @@ const EmployeeListContainer = ({ search }) => {
                 )
                 .map((employee, index) => (
                   <tr key={employee._id}>
-                    <td className="border border-gray-400 border border-gray-400 px-4 py-2">
+                    <td className="border border-gray-400 px-4 py-2">
                       {index + 1}
                     </td>
                     <td className="border border-gray-400 px-4 py-2">
@@ -82,12 +82,12 @@ const EmployeeListContainer = ({ search }) => {
 
                     <td className="border-t border-gray-400 py-3 space-x-5 text-center">
                       <Link to={`/employees/${employee._id}`}>
-                        <button className="mr-2 bg-blue-600 hover:bg-green-500 font-serif text-black hover:text-white font-bold py-2 px-4 rounded-xl">
+                        <button className="mr-2 bg-sky-800 hover:bg-green-500 hover:text-white font-bold py-2 px-4 rounded-xl">
                           <BiEditAlt />
                         </button>
                       </Link>
                       <button
-                        className="bg-[#E50D0E] hover:bg-red-800 font-serif hover:text-white font-semibold py-2 px-4 rounded-xl"
+                        className="bg-[#E50D0E] hover:bg-red-800 hover:text-white font-semibold py-2 px-4 rounded-xl"
                         onClick={() => handleDelete(employee._id)}
                       >
                         <AiFillDelete />

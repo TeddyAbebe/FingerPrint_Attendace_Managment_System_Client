@@ -9,29 +9,21 @@ export default function AttendanceList() {
         <div className="flex justify-between bg-sky-950 rounded-lg p-6 text-white">
           <div className="flex gap-4">
             <div>
-              From :{" "}
-              <input
-                type="date"
-                className="text-black font-serif rounded p-1"
-              />
+              Show :{" "}
+              <select className="text-black rounded-sm w-12 text-center">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>{" "}
+              entries
             </div>
-            <div>
-              To :{" "}
-              <input
-                type="date"
-                className="text-black font-serif rounded p-1"
-              />
-            </div>
-
-            <button className="mr-2 bg-blue-500 hover:bg-green-500 font-serif text-white font-bold py-1 px-2 rounded-lg">
-              View List
-            </button>
           </div>
 
           <div className="flex items-center gap-3 text-md font-semibold pr-10">
             Search :{" "}
             <input
-              className="rounded-md p-1"
+              className="rounded-sm p-1"
               // onChange={(e) => setSearch(e.target.value)}
             />
           </div>

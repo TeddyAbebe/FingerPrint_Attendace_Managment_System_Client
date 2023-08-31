@@ -15,7 +15,7 @@ function App() {
   const [search, setSearch] = useState("");
   return (
     <Router>
-      <div className="App">
+      <div className="App font-serif">
         <Header
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated}
