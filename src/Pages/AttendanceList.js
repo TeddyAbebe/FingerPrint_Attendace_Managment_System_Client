@@ -11,10 +11,10 @@ export default function AttendanceList() {
             <div>
               Show :{" "}
               <select className="text-black rounded-sm w-12 text-center">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
               </select>{" "}
               entries
             </div>
@@ -24,7 +24,6 @@ export default function AttendanceList() {
             Search :{" "}
             <input
               className="rounded-sm p-1"
-              // onChange={(e) => setSearch(e.target.value)}
             />
           </div>
         </div>

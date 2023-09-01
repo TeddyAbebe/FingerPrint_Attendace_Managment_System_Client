@@ -1,3 +1,8 @@
 body {
   overflow: hidden;
 }
+@media screen and (max-width: 1535px) {
+  body {
+    overflow: scroll;
+  }
+}

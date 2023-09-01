@@ -154,7 +154,7 @@ function EmployeeProfile() {
                 name="photo"
                 accept="image/*"
                 onChange={(e) => employeePicture(e.target.files[0])}
-                className="w-1/2 hover:cursor-pointer"
+                className="w-1/2 hover:cursor-pointer text-white"
               />
               <span className="flex justify-evenly items-center">
                 <button

@@ -19,8 +19,8 @@ const EmployeeListContainer = ({ search }) => {
   const deleteEmployee = useSelector((state) => state.deleteEmployee);
   const { success: successDelete, error: errorDelete } = deleteEmployee;
 
-  const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to fire the Employee ??")) {
+  const handleDelete = (id, name) => {
+    if (window.confirm(`Are you sure you want to fire Dear ${name} ??`)) {
       dispatch(deleteEmployeeAction(id));
     }
   };
@@ -42,7 +42,9 @@ const EmployeeListContainer = ({ search }) => {
                 <th className="border border-gray-400 px-4 py-2">No.</th>
                 <th className="border border-gray-400 px-4 py-2">Name</th>
                 <th className="border border-gray-400 px-4 py-2">Job Title</th>
-                <th className="border border-gray-400 px-4 py-2">Email Address</th>
+                <th className="border border-gray-400 px-4 py-2">
+                  Email Address
+                </th>
                 <th className="border border-gray-400 px-4 py-2">Mobile No</th>
                 <th className="border border-gray-400 px-4 py-2">Photo</th>
                 <th className="border border-gray-400 px-4 py-2">Tools</th>
@@ -88,7 +90,9 @@ const EmployeeListContainer = ({ search }) => {
                       </Link>
                       <button
                         className="bg-[#E50D0E] hover:bg-red-800 hover:text-white font-semibold py-2 px-4 rounded-xl"
-                        onClick={() => handleDelete(employee._id)}
+                        onClick={() =>
+                          handleDelete(employee._id, employee.name)
+                        }
                       >
                         <AiFillDelete />
                       </button>

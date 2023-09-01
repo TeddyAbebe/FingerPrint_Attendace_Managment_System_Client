@@ -27,7 +27,7 @@ export default function EmployeeList({ search, setSearch }) {
           <div className="flex items-center gap-3 text-lg font-semibold pr-10 text-white ">
             Search:{" "}
             <input
-              className="rounded-md p-1"
+              className="rounded-md p-1 text-black"
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
